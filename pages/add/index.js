@@ -2,6 +2,12 @@ import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Link from "next/link";
 
+export const createCode = async () => {
+
+	//Create a json file with the user's data
+	
+}
+
 export default function Add() {
 	return (
 		<div>
