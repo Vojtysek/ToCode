@@ -31,7 +31,7 @@ export default function Code({ data }) {
         <h1 className="text-4xl font-bold">{name}</h1>
         <div>
           <label>Status:</label>
-        <input type="checkbox" className=" rounded-full m-5 w-6 h-6 bg-white border-sky-400 border-4"/>
+        <input type="checkbox" className="rounded-full m-5 w-6 h-6 bg-white border-sky-400 border-4"/>
         </div>
         <div className="flex m-10 w-1/2 text-justify text-lg">
           <p className=" text-sm">{content}</p>

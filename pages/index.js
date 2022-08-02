@@ -12,7 +12,7 @@ export default function Home({ codes }) {
         </Link>
       </div>
       <div className="flex w-full">
-        <ul id="firstUl" className="flex items-center w-full flex-col">
+        <ul id="firstUl" key={codes} className="flex items-center w-full flex-col">
           {codes.map((code) => (
             <Link href={`/${code.name}`}>
               <li className="flex cursor-pointer p-5 m-5 w-1/2 bg-sky-400 text-sm text-black rounded-lg sm:text-base lg:text-xl">
