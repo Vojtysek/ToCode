@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { useRef, useEffect } from "react";
+import "../styles/List.module.css";
 
 export default function Home({ codes }) {
   let name = [];
@@ -12,10 +13,12 @@ export default function Home({ codes }) {
     const firstUl = document.getElementById("firstUl");
     const secondUl = document.getElementById("secondUl");
 
-    name.forEach((item) => {
-      console.log(item);
-    });
-  });
+    return () => {
+      for (let i = 0; i < name.length; i++) {
+       
+      }
+    };
+  }, [name]);
 
   return (
     <div className="grid place-items-center">
@@ -28,7 +31,13 @@ export default function Home({ codes }) {
         </Link>
       </div>
       <div className="flex w-full">
-        <ul id="firstUl" className="flex flex-col w-1/2"></ul>
+        <ul id="firstUl" className="flex flex-col w-1/2">
+          <Link href="/">
+            <li className="flex cursor-pointer p-5 m-5 bg-sky-400 text-sm text-black rounded-lg sm:text-base lg:text-xl">
+              <p>{name[0]}</p>
+            </li>
+          </Link>
+        </ul>
         <ul id="secondUl" className="flex flex-col w-1/2"></ul>
       </div>
       <button className="rounded-full w-12 h-12 text-2xl align-middle bg-sky-400">

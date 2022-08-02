@@ -11,6 +11,22 @@ export default function handler(req, res) {
       id: "2",
       name: "X",
       content: "x",
+        createdAt: "2020-01-01T00:00:00.000Z",
+        image: "https://picsum.photos/700/200",
     },
+    {
+        id: "3",
+        name: "Y",
+        content: "y",
+        createdAt: "2020-01-01T00:00:00.000Z",
+        image: "https://picsum.photos/700/200",
+    },
+    {
+        id: "4",
+        name: "Z",
+        content: "z",
+        createdAt: "2020-01-01T00:00:00.000Z",
+        image: "https://picsum.photos/700/200",
+    }
   ]);
 }
