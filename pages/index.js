@@ -3,10 +3,9 @@ import { PrismaClient } from "@prisma/client";
 
 const prisma = new PrismaClient();
 
-export default function Home({ codes }) {
-  console.log(codes);
+export default function Home({ initialCodes }) {
   return (
-    <div className="grid place-items-center">
+    <div className="grid font-Raleway place-items-center">
       <div className="flex py-10">
         <h1 className="text-3xl font-bold px-10">
           To<span className="text-sky-400">Code</span>
@@ -16,17 +15,11 @@ export default function Home({ codes }) {
         </Link>
       </div>
       <div className="flex w-full">
-        <ul
-          id="firstUl"
-          key={codes}
-          className="flex items-center w-full flex-col"
-        >
-          {codes?.map((code) => (
-            <Link href={`/${code.name}`}>
+        <ul id="firstUl" className="flex items-center w-full flex-col">
+          {initialCodes?.map((code) => (
+            <Link key={code.id} href={`/${code.title}`}>
               <li className="flex cursor-pointer p-5 m-5 w-1/2 bg-sky-400 text-sm text-black rounded-lg sm:text-base lg:text-xl">
-                <a key={code.id} className="text-xxl font-bold">
-                  {code.name}
-                </a>
+                <a className="text-xxl tracking-wide font-bold">{code.title}</a>
               </li>
             </Link>
           ))}

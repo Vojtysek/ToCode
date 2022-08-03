@@ -9,7 +9,7 @@ async function createCode(content) {
   });
 
   if (!response.ok) {
-    throw new Error("Something went wrong");
+    throw new Error(response.statusText);
   }
 
   return await response.json();
@@ -35,13 +35,13 @@ export default function Add() {
           <label className="text-2xl font-bold mx-10">Title</label>
           <input
             type="text"
-            name="first"
+            name="title"
             placeholder="<h1>"
             className="px-3 py-1.5 text-white bg-clip-padding border border-solid border-sky-400 rounded bg-transparent transition ease-in-out m-10 mt-2 focus:text-gray-200 focus:bg-grey-900 focus:border-white focus:outline-none"
           />
           <label className="text-2xl font-bold mx-10">Content</label>
           <textarea
-            name="last"
+            name="content"
             placeholder="<textarea>"
             className="px-3 py-1.5 text-white bg-clip-padding border border-solid border-sky-400 rounded bg-transparent transition ease-in-out m-10 mt-2 max-h-36 focus:text-gray-200 focus:bg-grey-900 focus:border-white focus:outline-none"
           ></textarea>
