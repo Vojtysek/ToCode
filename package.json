@@ -12,6 +12,7 @@
     "@fortawesome/fontawesome-svg-core": "^6.1.2",
     "@fortawesome/free-solid-svg-icons": "^6.1.2",
     "@fortawesome/react-fontawesome": "^0.2.0",
+    "@prisma/client": "^4.1.1",
     "@tailwindcss/forms": "^0.5.2",
     "mongodb": "^4.8.1",
     "mongoose": "^6.5.0",
@@ -24,6 +25,7 @@
     "eslint": "8.20.0",
     "eslint-config-next": "12.2.3",
     "postcss": "^8.4.14",
+    "prisma": "^4.1.1",
     "tailwindcss": "^3.1.6"
   }
 }

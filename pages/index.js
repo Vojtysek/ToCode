@@ -1,6 +1,10 @@
 import Link from "next/link";
+import { PrismaClient } from "@prisma/client";
+
+const prisma = new PrismaClient();
 
 export default function Home({ codes }) {
+  console.log(codes);
   return (
     <div className="grid place-items-center">
       <div className="flex py-10">
@@ -12,11 +16,17 @@ export default function Home({ codes }) {
         </Link>
       </div>
       <div className="flex w-full">
-        <ul id="firstUl" key={codes} className="flex items-center w-full flex-col">
-          {codes.map((code) => (
+        <ul
+          id="firstUl"
+          key={codes}
+          className="flex items-center w-full flex-col"
+        >
+          {codes?.map((code) => (
             <Link href={`/${code.name}`}>
               <li className="flex cursor-pointer p-5 m-5 w-1/2 bg-sky-400 text-sm text-black rounded-lg sm:text-base lg:text-xl">
-                <a className="text-xxl font-bold">{code.name}</a>
+                <a key={code.id} className="text-xxl font-bold">
+                  {code.name}
+                </a>
               </li>
             </Link>
           ))}
@@ -32,12 +42,10 @@ export default function Home({ codes }) {
 }
 
 export async function getServerSideProps() {
-  const url = "http://localhost:3000/api/data";
-  const res = await fetch(url);
-  const codes = await res.json();
+  const codes = await prisma.content.findMany();
   return {
     props: {
-      codes,
+      initialCodes: JSON.parse(JSON.stringify(codes)),
     },
   };
 }
