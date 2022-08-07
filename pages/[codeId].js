@@ -1,13 +1,34 @@
 import Link from "next/link";
 import { useRouter } from "next/router";
 import DefaultErrorPage from "next/error";
+import Head from "next/head";
 
 import { PrismaClient } from "@prisma/client";
 
 const prisma = new PrismaClient();
 
 export default function Code({ data }) {
+  const router = useRouter();
+  const { codeId } = router.query;
+
+  let title;
+  let content;
+  let image;
+
+  data.forEach((code) => {
+    if (code.title === codeId) {
+      title = code.title;
+      content = code.content;
+      image = code.image;
+    }
+  });
+
   return (
+    <>
+    <Head>
+      <title>{title}</title>
+      <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+    </Head>
     <div className="grid place-items-center">
       <div className="flex py-10">
         <Link href="/">
@@ -16,18 +37,15 @@ export default function Code({ data }) {
           </h1>
         </Link>
       </div>
-      {data?.map((code) => (
-        <div key={code.id} className="flex flex-col items-center">
-          <h1 className="text-4xl font-bold">{code.title}</h1>
-          <div className="flex m-10 w-1/2 text-justify text-lg">
-            <p key={code.id} className=" text-sm">
-              {code.content}
-            </p>
-          </div>
-          <img src={code.image} className=" w-30 my-5" />
+      <div className="flex flex-col items-center">
+        <h1 className="text-4xl font-bold">{title}</h1>
+        <div className="flex m-10 w-1/2 text-justify text-lg">
+          <p className=" text-sm">{content}</p>
         </div>
-      ))}
+        <img src={image} className=" w-30 my-5" />
+      </div>
     </div>
+    </>
   );
 }
 
@@ -39,13 +57,3 @@ export async function getServerSideProps() {
     },
   };
 }
-
-/*
-<div>
-            <label>Status:</label>
-            <input
-              type="checkbox"
-              className="rounded-full m-5 w-6 h-6 bg-white border-sky-400 border-4"
-            />
-          </div>
-*/
